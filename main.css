@@ -1,0 +1,32 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 200px;
+    grid-template-areas:
+        ". a a ."
+        ". a a .";
+}
+
+.maks-container {
+    grid-area: a;
+    align-self: center;
+    justify-self: center;
+}
+
+.input {
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.3);
+    padding: 10px;
+    font-size: 16px;
+    margin-top: -4px;
+}
+
+#speak {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    border: 1px solid black;
+}

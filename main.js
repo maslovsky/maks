@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', onReady);
 const height = 384;
 
 async function onReady() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('say');
+
     const canvasElement = document.getElementById('maks-canvas');
 
     const context = canvasElement.getContext('2d');
@@ -11,19 +14,26 @@ async function onReady() {
 
     drawMaks(context, canvasElement, maks);
 
-    startTalking(context, canvasElement, maks);
+    startTalking(context, canvasElement, maks, myParam);
 
     document.getElementById('speak').onclick = () => {
+        const msg = document.getElementById('text').value ;
+
         startTalking(context, canvasElement, maks);
+
+        const url = location.protocol + '//' + location.host + location.pathname;
+
+        document.getElementById('suda').href = url + `?say=${msg}`;
+        document.getElementById('suda').innerText = url + `?say=${msg}`;
     };
 }
 
-async function startTalking(context, canvasElement, maks) {
+async function startTalking(context, canvasElement, maks, msg = 'введи текст дурень') {
     let stop = null;
 
     const sayIt = () => stop = talk(context, canvasElement, maks, sayIt);
 
-    await makeSomeNoise(document.getElementById('text').value || 'введи текст дурень', () => sayIt());
+    await makeSomeNoise(msg, () => sayIt());
 
     stop();
     drawMaks(context, canvasElement, maks);

@@ -99,6 +99,9 @@ async function loadMaks() {
 
 function drawMaks(context, canvasElement, maks, offsetY = 0) {
     context.clearRect(0, 0, canvasElement.width, canvasElement.height);
+
+    context.fillStyle = "#541703";
+    context.fillRect(40, 40, canvasElement.width - 80, canvasElement.height - 110);
     context.drawImage(maks.headImage, 0, 0, canvasElement.width, height);
     context.drawImage(maks.neckImage, 0, offsetY, canvasElement.width, height);
 }

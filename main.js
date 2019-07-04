@@ -19,7 +19,7 @@ async function onReady() {
     document.getElementById('speak').onclick = () => {
         const msg = document.getElementById('text').value ;
 
-        startTalking(context, canvasElement, maks);
+        startTalking(context, canvasElement, maks, msg);
 
         const url = location.protocol + '//' + location.host + location.pathname;
 
